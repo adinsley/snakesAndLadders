@@ -34,12 +34,12 @@ describe('Snakes and Ladders', function(){
       assert.equal(0, player1.currentBoardIndex);
   });
 
-  it('player moves to position 4', function(){
+  it('player moves to position 2', function(){
       var game1 = new Game();
       var player1 = new Player("P1");
       player1.joinGame(game1);
-      player1.move(4);
-      assert.equal(4, player1.currentBoardIndex);
+      player1.move(2);
+      assert.equal(2, player1.currentBoardIndex);
   });
 
   it('player moves by rolling dice', function(){
@@ -60,9 +60,25 @@ describe('Snakes and Ladders', function(){
       player1.move(6);
       assert.equal(true, player1.hasWon());
       assert.deepEqual(player1, game1.winner);
-
-      // console.log(diceRoll);
-      // console.log(player1.currentBoardIndex)
   });
+  it('snakes and ladders work', function(){
+      var game1 = new Game();
+      var player1 = new Player("P1");
+      player1.joinGame(game1);
+      player1.move(3);
+      assert.equal(2, player1.currentBoardIndex);
+      
+  });
+  it('players take turns', function(){
+      var game1 = new Game();
+      var player1 = new Player("P1");
+      var player2 = new Player("P2");
+      player1.joinGame(game1);
+      player2.joinGame(game1);
+      assert.deepEqual(player1, game1.currentPlayer());
+      player1.move(3);
+      assert.deepEqual(player2, game1.currentPlayer());
+  });
+
 
 }) //End of test//
